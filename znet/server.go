@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/aceld/zinx/utils"
-	"github.com/aceld/zinx/ziface"
+	"github.com/p0nley/zinx/utils"
+	"github.com/p0nley/zinx/ziface"
 )
 
 var zinxLogo = `                                        
@@ -140,8 +140,8 @@ func (s *Server) Serve() {
 }
 
 //AddRouter 路由功能：给当前服务注册一个路由业务方法，供客户端链接处理使用
-func (s *Server) AddRouter(msgID uint32, router ziface.IRouter) {
-	s.msgHandler.AddRouter(msgID, router)
+func (s *Server) AddRouter(router ziface.IRouter) {
+	s.msgHandler.AddRouter(router)
 }
 
 //GetConnMgr 得到链接管理
@@ -182,7 +182,7 @@ func (s *Server) Packet() ziface.Packet {
 func printLogo() {
 	fmt.Println(zinxLogo)
 	fmt.Println(topLine)
-	fmt.Println(fmt.Sprintf("%s [Github] https://github.com/aceld                    %s", borderLine, borderLine))
+	fmt.Println(fmt.Sprintf("%s [Github] https://github.com/p0nley                    %s", borderLine, borderLine))
 	fmt.Println(fmt.Sprintf("%s [tutorial] https://www.yuque.com/aceld/npyr8s/bgftov %s", borderLine, borderLine))
 	fmt.Println(bottomLine)
 	fmt.Printf("[Zinx] Version: %s, MaxConn: %d, MaxPacketSize: %d\n",

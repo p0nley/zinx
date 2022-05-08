@@ -1,8 +1,9 @@
 package zlog_test
 
 import (
-	"github.com/aceld/zinx/zlog"
 	"testing"
+
+	"github.com/p0nley/zinx/zlog"
 )
 
 func TestStdZLog(t *testing.T) {

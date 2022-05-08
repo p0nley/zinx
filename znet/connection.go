@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/aceld/zinx/utils"
-	"github.com/aceld/zinx/ziface"
+	"github.com/p0nley/zinx/utils"
+	"github.com/p0nley/zinx/ziface"
 )
 
 //Connection 链接
@@ -174,7 +174,7 @@ func (c *Connection) RemoteAddr() net.Addr {
 }
 
 //SendMsg 直接将Message数据发送数据给远程的TCP客户端
-func (c *Connection) SendMsg(msgID uint32, data []byte) error {
+func (c *Connection) SendMsg(data []byte) error {
 	c.RLock()
 	defer c.RUnlock()
 	if c.isClosed == true {
@@ -183,9 +183,8 @@ func (c *Connection) SendMsg(msgID uint32, data []byte) error {
 
 	//将data封包，并且发送
 	dp := c.TCPServer.Packet()
-	msg, err := dp.Pack(NewMsgPackage(msgID, data))
+	msg, err := dp.Pack(NewMsgPackage(data))
 	if err != nil {
-		fmt.Println("Pack error msg ID = ", msgID)
 		return errors.New("Pack error msg ")
 	}
 
@@ -195,7 +194,7 @@ func (c *Connection) SendMsg(msgID uint32, data []byte) error {
 }
 
 //SendBuffMsg  发生BuffMsg
-func (c *Connection) SendBuffMsg(msgID uint32, data []byte) error {
+func (c *Connection) SendBuffMsg(data []byte) error {
 	c.RLock()
 	defer c.RUnlock()
 	idleTimeout := time.NewTimer(5 * time.Millisecond)
@@ -207,9 +206,8 @@ func (c *Connection) SendBuffMsg(msgID uint32, data []byte) error {
 
 	//将data封包，并且发送
 	dp := c.TCPServer.Packet()
-	msg, err := dp.Pack(NewMsgPackage(msgID, data))
+	msg, err := dp.Pack(NewMsgPackage(data))
 	if err != nil {
-		fmt.Println("Pack error msg ID = ", msgID)
 		return errors.New("Pack error msg ")
 	}
 

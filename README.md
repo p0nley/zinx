@@ -10,7 +10,7 @@ Zinx 是一个基于Golang的轻量级并发服务器框架
 ---
 ## zinx源码地址
 ### Github
-Git: https://github.com/aceld/zinx
+Git: https://github.com/p0nley/zinx
 
 ### 码云(Gitee)
 Git: https://gitee.com/Aceld/zinx
@@ -67,7 +67,7 @@ Zinx框架的项目制作采用编码和学习教程同步进行，将开发的�
 
 ```bash
 # 克隆项目
-$ git clone https://github.com/aceld/zinx.git
+$ git clone https://github.com/p0nley/zinx.git
 
 # 进入服务端样例目录
 $ cd ./zinx/examples/zinx_server
@@ -122,7 +122,7 @@ $ ./server
  ▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀  ▀▀    ▀▀  ▀▀▀  ▀▀▀ 
                                         
 ┌───────────────────────────────────────────────────┐
-│ [Github] https://github.com/aceld                 │
+│ [Github] https://github.com/p0nley                 │
 │ [tutorial] https://www.kancloud.cn/aceld/zinx     │
 └───────────────────────────────────────────────────┘
 [Zinx] Version: V0.11, MaxConn: 3, MaxPacketSize: 4096
@@ -178,8 +178,8 @@ func main() {
 ```go
 import (
 	"fmt"
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/znet"
+	"github.com/p0nley/zinx/ziface"
+	"github.com/p0nley/zinx/znet"
 )
 
 //ping test 自定义路由
@@ -210,7 +210,7 @@ import (
 	"io"
 	"net"
 	"time"
-	"github.com/aceld/zinx/znet"
+	"github.com/p0nley/zinx/znet"
 )
 
 /*
@@ -378,7 +378,7 @@ func (c *Connection) RemoveProperty(key string)
 ---
 
 #### 开发者
--   刘丹冰([@aceld](https://github.com/aceld))
+-   刘丹冰([@aceld](https://github.com/p0nley))
 -   张超([@zhngcho](https://github.com/zhngcho))
 -   高智辉Roger([@adsian](https://github.com/adsian))
 -   胡贵建([@huguijian](https://github.com/huguijian))
@@ -397,7 +397,7 @@ func (c *Connection) RemoveProperty(key string)
 -  胡琪([@huqitt](https://github.com/huqitt))
 
 ---
-[zinx(websocket版本)](https://github.com/aceld/zinx/tree/wsserver)
+[zinx(websocket版本)](https://github.com/p0nley/zinx/tree/wsserver)
 #### 开发者
 -  胡贵建([@huguijian](https://github.com/huguijian))
 
@@ -406,7 +406,7 @@ func (c *Connection) RemoveProperty(key string)
 感谢所有为zinx贡献的开发者
 
 
-<a href="https://github.com/aceld/zinx/graphs/contributors">
+<a href="https://github.com/p0nley/zinx/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=aceld/zinx" />
 </a>    
 
@@ -420,7 +420,7 @@ func (c *Connection) RemoveProperty(key string)
 [danbing.at@gmail.com](mailto:danbing.at@gmail.com)
 
 `github`:
-[https://github.com/aceld](https://github.com/aceld)
+[https://github.com/p0nley](https://github.com/p0nley)
 
 `原创书籍`:
 [https://www.kancloud.cn/@aceld](https://www.kancloud.cn/@aceld)

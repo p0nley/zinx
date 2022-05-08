@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/aceld/zinx/ziface"
+	"github.com/p0nley/zinx/ziface"
 )
 
 //ConnManager 连接管理模块
@@ -95,4 +95,12 @@ func (connMgr *ConnManager) ClearOneConn(connID uint32) {
 
 	fmt.Println("Clear Connections ID:  ", connID, "err")
 	return
+}
+
+//Get 利用ConnID获取链接
+func (connMgr *ConnManager) GetAll() map[uint32]ziface.IConnection {
+	//connMgr.connLock.RLock()
+	//defer connMgr.connLock.RUnlock()
+	return connMgr.connections
+
 }

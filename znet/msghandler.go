@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/aceld/zinx/utils"
-	"github.com/aceld/zinx/ziface"
+	"github.com/p0nley/zinx/utils"
+	"github.com/p0nley/zinx/ziface"
 )
 
 // MsgHandle -
@@ -39,9 +39,10 @@ func (mh *MsgHandle) SendMsgToTaskQueue(request ziface.IRequest) {
 
 //DoMsgHandler 马上以非阻塞方式处理消息
 func (mh *MsgHandle) DoMsgHandler(request ziface.IRequest) {
-	handler, ok := mh.Apis[request.GetMsgID()]
+	handler, ok := mh.Apis[0]
+	fmt.Println(handler)
 	if !ok {
-		fmt.Println("api msgID = ", request.GetMsgID(), " is not FOUND!")
+		fmt.Println("api msgID = 0 is not FOUND!")
 		return
 	}
 
@@ -52,14 +53,14 @@ func (mh *MsgHandle) DoMsgHandler(request ziface.IRequest) {
 }
 
 //AddRouter 为消息添加具体的处理逻辑
-func (mh *MsgHandle) AddRouter(msgID uint32, router ziface.IRouter) {
+func (mh *MsgHandle) AddRouter(router ziface.IRouter) {
 	//1 判断当前msg绑定的API处理方法是否已经存在
-	if _, ok := mh.Apis[msgID]; ok {
-		panic("repeated api , msgID = " + strconv.Itoa(int(msgID)))
+	if _, ok := mh.Apis[0]; ok {
+		panic("repeated api , msgID = " + strconv.Itoa(int(0)))
 	}
 	//2 添加msg与api的绑定关系
-	mh.Apis[msgID] = router
-	fmt.Println("Add api msgID = ", msgID)
+	mh.Apis[0] = router
+	fmt.Println("Add api msgID = ", 0)
 }
 
 //StartOneWorker 启动一个Worker工作流程

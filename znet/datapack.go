@@ -5,11 +5,11 @@ import (
 	"encoding/binary"
 	"errors"
 
-	"github.com/aceld/zinx/utils"
-	"github.com/aceld/zinx/ziface"
+	"github.com/p0nley/zinx/utils"
+	"github.com/p0nley/zinx/ziface"
 )
 
-var defaultHeaderLen uint32 = 8
+var defaultHeaderLen uint32 = 4
 
 //DataPack 封包拆包类实例，暂时不需要成员
 type DataPack struct{}
@@ -35,11 +35,6 @@ func (dp *DataPack) Pack(msg ziface.IMessage) ([]byte, error) {
 		return nil, err
 	}
 
-	//写msgID
-	if err := binary.Write(dataBuff, binary.LittleEndian, msg.GetMsgID()); err != nil {
-		return nil, err
-	}
-
 	//写data数据
 	if err := binary.Write(dataBuff, binary.LittleEndian, msg.GetData()); err != nil {
 		return nil, err
@@ -58,11 +53,6 @@ func (dp *DataPack) Unpack(binaryData []byte) (ziface.IMessage, error) {
 
 	//读dataLen
 	if err := binary.Read(dataBuff, binary.LittleEndian, &msg.DataLen); err != nil {
-		return nil, err
-	}
-
-	//读msgID
-	if err := binary.Read(dataBuff, binary.LittleEndian, &msg.ID); err != nil {
 		return nil, err
 	}
 
